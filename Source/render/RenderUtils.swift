@@ -8,28 +8,6 @@ import AppKit
 
 class RenderUtils {
 
-    class func mapLineJoinToString(_ join: LineJoin?) -> String {
-        switch join {
-        case LineJoin.round?:
-            return kCALineJoinRound
-        case LineJoin.bevel?:
-            return kCALineJoinBevel
-        default:
-            return kCALineJoinMiter
-        }
-    }
-
-    class func mapLineCapToString(_ cap: LineCap?) -> String {
-        switch cap {
-        case LineCap.round?:
-            return kCALineCapRound
-        case LineCap.square?:
-            return kCALineCapSquare
-        default:
-            return kCALineCapButt
-        }
-    }
-
     class func mapDash(_ dashes: [Double]) -> UnsafeMutablePointer<CGFloat> {
         let p = UnsafeMutablePointer<CGFloat>.allocate(capacity: dashes.count * MemoryLayout<CGFloat>.size)
         for (index, item) in dashes.enumerated() {

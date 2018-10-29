@@ -74,7 +74,7 @@ func addMorphingAnimation(_ animation: BasicAnimation, sceneLayer: CALayer, anim
         animation.progress = t
         animation.onProgressUpdate?(t)
     }
-    
+
     layer.path = fromLocus.toCGPath()
 
     // Stroke
@@ -86,8 +86,8 @@ func addMorphingAnimation(_ animation: BasicAnimation, sceneLayer: CALayer, anim
         }
 
         layer.lineWidth = CGFloat(stroke.width)
-        layer.lineCap = RenderUtils.mapLineCapToString(stroke.cap)
-        layer.lineJoin = RenderUtils.mapLineJoinToString(stroke.join)
+        layer.lineCap = MCAShapeLayerLineCap.mapToGraphics(model: stroke.cap)
+        layer.lineJoin = MCAShapeLayerLineJoin.mapToGraphics(model: stroke.join)
         layer.lineDashPattern = stroke.dashes.map { NSNumber(value: $0) }
     }
 
@@ -115,7 +115,7 @@ fileprivate func pathAnimation(from: Locus, to: Locus, duration: Double, renderT
     animation.fromValue = fromPath
     animation.toValue = toPath
     animation.duration = duration
-    animation.fillMode = kCAFillModeForwards
+    animation.fillMode = MCAMediaTimingFillMode.forwards
     animation.isRemovedOnCompletion = false
 
     return animation

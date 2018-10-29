@@ -104,8 +104,8 @@ func addShapeAnimation(_ animation: BasicAnimation, sceneLayer: CALayer, animati
         }
 
         layer.lineWidth = CGFloat(stroke.width)
-        layer.lineCap = RenderUtils.mapLineCapToString(stroke.cap)
-        layer.lineJoin = RenderUtils.mapLineJoinToString(stroke.join)
+        layer.lineCap = MCAShapeLayerLineCap.mapToGraphics(model: stroke.cap)
+        layer.lineJoin = MCAShapeLayerLineJoin.mapToGraphics(model: stroke.join)
         layer.lineDashPattern = stroke.dashes.map { NSNumber(value: $0) }
     } else if shape.fill == nil {
         layer.strokeColor = MColor.black.cgColor
@@ -204,7 +204,7 @@ fileprivate func generateShapeAnimation(from: Shape, to: Shape, duration: Double
 
     // Group
     group.duration = duration
-    group.fillMode = kCAFillModeForwards
+    group.fillMode = MCAMediaTimingFillMode.forwards
     group.isRemovedOnCompletion = false
 
     return group

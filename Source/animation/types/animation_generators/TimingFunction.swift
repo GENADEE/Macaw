@@ -6,20 +6,19 @@ import AppKit
 
 func caTimingFunction(_ easing: Easing) -> CAMediaTimingFunction {
     if easing === Easing.ease {
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionDefault)
+        return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.default)
     }
     if easing === Easing.linear {
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.linear)
     }
     if easing === Easing.easeIn {
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.easeIn)
     }
     if easing === Easing.easeOut {
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.easeOut)
     }
     if easing === Easing.easeInOut {
-        return CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.easeInEaseOut)
     }
-    return CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+    return CAMediaTimingFunction(name: MCAMediaTimingFunctionName.linear)
 }
-
